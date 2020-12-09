@@ -34,7 +34,7 @@ router.post("/login", async (req, res) => {
     return res.status(400).send("This device is not registered and new user");
   }
 
-  res.send("User was logged in");
+  res.send(user);
 });
 
 module.exports = router;
