@@ -27,8 +27,14 @@ router.post("/register", async (req, res) => {
 });
 
 //Login user
-router.post("/login", (req, res) => {
-  res.send("Login endpoint");
+router.post("/login", async (req, res) => {
+  const user = await User.findOne({ deviceId: req.body.deviceId });
+
+  if (!user) {
+    return res.status(400).send("This device is not registered and new user");
+  }
+
+  res.send("User was logged in");
 });
 
 module.exports = router;
