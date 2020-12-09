@@ -20,6 +20,8 @@ app.use(express.json());
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
 
+console.log("test");
+
 //ROUTE MIDDLEWARES
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
