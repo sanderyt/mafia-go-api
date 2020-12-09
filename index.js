@@ -7,7 +7,7 @@ const PORT = 3000;
 dotenv.config();
 
 mongoose.connect(
-  process.env.DB_CONNECTION,
+  "mongodb+srv://sanderyt:mzmTSr7plokzQ73p@cluster0.t0pjs.gcp.mongodb.net/mafiago?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("Connected to DB");
