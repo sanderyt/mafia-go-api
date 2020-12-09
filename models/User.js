@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
       type: Number,
       required: true
     },
-    gold: {
+    coins: {
       type: Number,
       required: true
     }

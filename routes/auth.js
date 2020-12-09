@@ -6,10 +6,16 @@ router.post("/register", async (req, res) => {
   const user = new User({
     name: req.body.name,
     deviceId: req.body.deviceId,
+    clan: {
+      name: null
+    },
     data: {
       gold: 0,
-      hats: 0
-    }
+      hats: 0,
+      coins: 0
+    },
+    characters: null,
+    properties: null
   });
 
   try {
