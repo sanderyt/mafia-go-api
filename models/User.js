@@ -10,6 +10,9 @@ const userSchema = new mongoose.Schema({
     required: true,
     min: 6
   },
+  socialUsername: {
+    type: String
+  },
   clan: {
     name: String
   },
