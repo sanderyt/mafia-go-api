@@ -4,7 +4,8 @@
   "description": "The backend for Mafia Go in Node",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
