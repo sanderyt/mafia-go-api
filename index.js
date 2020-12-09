@@ -22,7 +22,7 @@ const userRoute = require("./routes/user");
 
 //ROUTE MIDDLEWARES
 app.use("/api/auth", authRoute);
-app.use("/api/user", userRoute);
+app.use("/api/users", userRoute);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Mafia Go API");

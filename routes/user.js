@@ -1,13 +1,19 @@
 const router = require("express").Router();
+const User = require("../models/User");
 
-//Get all users
-router.get("/", (req, res) => {
-  res.send("Get all users endpoint");
+/**
+ * GET requests
+ */
+router.get("/", async (req, res) => {
+  const users = await User.find();
+  res.send(users);
 });
 
-//Get specific user data
-router.get("/", (req, res) => {
-  res.send("Get a specific user");
+router.get("/:id", async (req, res) => {
+  const userId = req.params.id;
+  const user = await User.findById(userId);
+
+  res.send(user);
 });
 
 module.exports = router;
