@@ -25,7 +25,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the Mafia Go API");
+  res.send("Welcome to the Mafia Go API!");
 });
 
 app.listen(PORT, () => console.log(`Server is up and running on port ${PORT}`));
