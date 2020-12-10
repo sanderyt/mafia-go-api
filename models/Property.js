@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const CharacterPosition = require("../models/CharacterPosition");
 const Schema = mongoose.Schema;
 
 const propertySchema = new mongoose.Schema({
@@ -37,7 +36,7 @@ const propertySchema = new mongoose.Schema({
   },
   characterPositions: {
     type: Schema.Types.ObjectId,
-    ref: CharacterPosition
+    ref: "CharacterPosition"
   }
 });
 

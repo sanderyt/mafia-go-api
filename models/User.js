@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Property = require("../models/Property");
-const Character = require("../models/Character");
 
 const userSchema = new mongoose.Schema({
   deviceId: {
@@ -36,10 +34,10 @@ const userSchema = new mongoose.Schema({
       required: true
     }
   },
-  characters: { type: Schema.Types.ObjectId, ref: Character },
+  characters: { type: Schema.Types.ObjectId, ref: "Character" },
   properties: {
     type: Schema.Types.ObjectId,
-    ref: Property
+    ref: "Property"
   }
 });
 
