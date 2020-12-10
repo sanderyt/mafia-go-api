@@ -1,4 +1,4 @@
-import firebase from "../firebase";
+// import firebase from "../firebase";
 const router = require("express").Router();
 const Property = require("../models/Property");
 
@@ -18,13 +18,13 @@ router.post("/win", async (req, res) => {
 
   const defenderToken = "13123";
 
-  try {
-    const response = await firebase
-      .messaging()
-      .sendToDevice(defenderToken, payload);
-  } catch (error) {
-    res.status(400).send(error);
-  }
+  //   try {
+  //     const response = await firebase
+  //       .messaging()
+  //       .sendToDevice(defenderToken, payload);
+  //   } catch (error) {
+  //     res.status(400).send(error);
+  //   }
 });
 
 module.exports = router;
