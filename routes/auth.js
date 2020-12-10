@@ -32,6 +32,8 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   const user = await User.findOne({ deviceId: req.body.deviceId });
 
+  //Get the device token from FCM and post to DB
+
   if (!user) {
     return res.status(400).send("This device is not registered and new user");
   }

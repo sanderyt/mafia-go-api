@@ -7,6 +7,10 @@ router.get("/", async (req, res) => {
   res.send("Getting all owned properties endpoint");
 });
 
+router.post("/add", async (req, res) => {
+  res.send("Add property endpoint");
+});
+
 // Post a new property and change owner
 router.post("/win", async (req, res) => {
   /*

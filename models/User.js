@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const Property = require("../models/Property");
 const Character = require("../models/Character");
 
@@ -35,8 +36,11 @@ const userSchema = new mongoose.Schema({
       required: true
     }
   },
-  characters: {},
-  properties: {}
+  characters: { type: Schema.Types.ObjectId, ref: Character },
+  properties: {
+    type: Schema.Types.ObjectId,
+    ref: Property
+  }
 });
 
 module.exports = mongoose.model("User", userSchema);

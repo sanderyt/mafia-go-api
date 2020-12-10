@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const CharacterPosition = require("../models/CharacterPosition");
+const Schema = mongoose.Schema;
 
 const propertySchema = new mongoose.Schema({
   id: {
@@ -9,13 +11,33 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  city: {
+    type: String,
+    required: true
+  },
+  country: {
+    type: String,
+    required: true
+  },
   type: {
     type: String,
     required: true
   },
-  owner: {
+  ownerId: {
     type: String,
     required: true
+  },
+  ownerName: {
+    type: String,
+    required: true
+  },
+  defenceSet: {
+    type: Boolean,
+    required: true
+  },
+  characterPositions: {
+    type: Schema.Types.ObjectId,
+    ref: CharacterPosition
   }
 });
 
