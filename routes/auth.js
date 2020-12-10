@@ -7,6 +7,7 @@ router.post("/register", async (req, res) => {
     name: req.body.name,
     deviceId: req.body.deviceId,
     socialUsername: req.body.socialUsername || null,
+    fcmToken: req.body.fcmToken || null,
     clan: {
       name: null
     },

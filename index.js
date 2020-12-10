@@ -19,10 +19,12 @@ app.use(express.json());
 //ROUTES
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
+const propertyRoute = require("./routes/properties");
 
 //ROUTE MIDDLEWARES
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/property", userRoute);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Mafia Go API");

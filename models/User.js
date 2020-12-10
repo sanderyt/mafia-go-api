@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const Property = require("../models/Property");
+const Character = require("../models/Character");
 
 const userSchema = new mongoose.Schema({
   deviceId: {
@@ -11,6 +13,9 @@ const userSchema = new mongoose.Schema({
     min: 6
   },
   socialUsername: {
+    type: String
+  },
+  fcmToken: {
     type: String
   },
   clan: {
@@ -30,8 +35,12 @@ const userSchema = new mongoose.Schema({
       required: true
     }
   },
-  characters: {},
-  properties: {}
+  characters: {
+    type: Character
+  },
+  properties: {
+    type: Property
+  }
 });
 
 module.exports = mongoose.model("User", userSchema);
