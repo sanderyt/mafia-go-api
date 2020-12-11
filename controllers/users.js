@@ -38,9 +38,9 @@ module.exports = {
 
     try {
       const user = await User.findById(uid).populate("properties");
-      res.status(200).send(user.properties);
+      res.status(200).json(user.properties);
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).json(error);
     }
   },
 
