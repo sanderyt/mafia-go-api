@@ -11,7 +11,7 @@ router.post("/register", async (req, res) => {
     clan: {
       name: null
     },
-    data: {
+    currency: {
       gold: 0,
       hats: 0,
       coins: 0
@@ -19,6 +19,8 @@ router.post("/register", async (req, res) => {
     characters: [],
     properties: []
   });
+
+  // Add the default characters here
 
   try {
     const newUser = await user.save();

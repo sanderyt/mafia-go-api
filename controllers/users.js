@@ -73,5 +73,17 @@ module.exports = {
 
   editUserCharacter: async (req, res, next) => {
     //replace user
+  },
+
+  updateUserCurrency: async (req, res, next) => {
+    const { uid } = req.params;
+    const currencies = req.body;
+
+    const user = await User.findById(uid);
+    user.currency = currencies;
+  },
+
+  addUserPropertyDefence: async (req, res, next) => {
+    const { uid } = req.params;
   }
 };

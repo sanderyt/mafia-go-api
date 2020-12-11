@@ -23,4 +23,10 @@ router
   .post(UsersController.addUserCharacter)
   .patch(UsersController.editUserCharacter);
 
+// Special endpoints
+router.route("/:uid/currency").patch(UsersController.updateUserCurrency);
+router
+  .route("/:uid/properties/defence")
+  .post(UsersController.addUserPropertyDefence);
+
 module.exports = router;

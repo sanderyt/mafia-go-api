@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   clan: {
     name: String
   },
-  data: {
+  currency: {
     gold: {
       type: Number,
       required: true
