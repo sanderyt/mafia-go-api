@@ -5,7 +5,7 @@ module.exports = {
   getAllUsers: async (req, res, next) => {
     try {
       const users = await User.find();
-      res.status(200).json(users);
+      res.status(200).json({ users });
     } catch (error) {
       res.status(400).send(error);
     }
@@ -15,7 +15,7 @@ module.exports = {
     const { uid } = req.params;
     try {
       const user = await User.findById(uid);
-      res.status(200).json(user);
+      res.status(200).json({ user });
     } catch (error) {
       res.status(400).send(error);
     }
@@ -33,8 +33,15 @@ module.exports = {
     }
   },
 
-  getAllUserProperty: async (req, res, next) => {
-    //replace user
+  getAllUserProperties: async (req, res, next) => {
+    const { uid } = req.params;
+
+    try {
+      const user = await User.findById(uid).populate("properties");
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(400).json(error);
+    }
   },
 
   addUserProperty: async (req, res, next) => {

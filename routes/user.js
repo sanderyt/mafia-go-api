@@ -13,7 +13,7 @@ router
 
 router
   .route("/:uid/properties")
-  .get(UsersController.getAllUserProperty)
+  .get(UsersController.getAllUserProperties)
   .post(UsersController.addUserProperty)
   .delete(UsersController.deleteUserProperty);
 
