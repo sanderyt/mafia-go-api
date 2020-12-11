@@ -5,7 +5,12 @@ const User = require("../models/User");
 
 // Get all properties being owned
 router.get("/", async (req, res) => {
-  res.send("Getting all properties endpoint");
+  try {
+    const properties = await Property.find();
+    res.status(200).json(properties);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 });
 
 router.post("/add", async (req, res) => {
