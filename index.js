@@ -16,6 +16,7 @@ mongoose.connect(
 );
 
 app.use(express.json());
+app.use(express.static(__dirname + "/public"));
 
 //ROUTES
 const authRoute = require("./routes/auth");
@@ -28,7 +29,7 @@ app.use("/api/users", userRoute);
 app.use("/api/properties", propertyRoute);
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./public", "index.html"));
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.listen(PORT, () => console.log(`Server is up and running on port ${PORT}`));
