@@ -1,38 +1,26 @@
 const router = require("express").Router();
-const User = require("../models/User");
+const UsersController = require("../controllers/users");
 
 /**
- * GET requests
+ * All users endpoint
  */
-router.get("/", async (req, res) => {
-  const users = await User.find();
-  res.send(users);
-});
+router.route("/").get(UsersController.getAllUsers);
 
-router.get("/:id", async (req, res) => {
-  const userId = req.params.id;
-  const user = await User.findById(userId);
+router
+  .route("/:uid")
+  .get(UsersController.getUser)
+  .patch(UsersController.editUser);
 
-  res.send(user);
-});
+router
+  .route("/:uid/properties")
+  .get(UsersController.getAllUserProperty)
+  .post(UsersController.addUserProperty)
+  .delete(UsersController.deleteUserProperty);
 
-/**
- * UPDATE
- */
-router.put("/:id/edit", async (req, res) => {
-  const userId = req.params.id;
-
-  try {
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      // prettier-ignore
-      {$inc : {'data.$.gold' : 1}},
-      { new: true }
-    );
-    res.send(updatedUser);
-  } catch (error) {
-    res.status(400).send(error);
-  }
-});
+router
+  .route("/:uid/characters")
+  .get(UsersController.getAllUserCharacters)
+  .post(UsersController.addUserCharacter)
+  .patch(UsersController.editUserCharacter);
 
 module.exports = router;

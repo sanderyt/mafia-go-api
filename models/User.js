@@ -34,11 +34,13 @@ const userSchema = new mongoose.Schema({
       required: true
     }
   },
-  characters: { type: Schema.Types.ObjectId, ref: "Character" },
-  properties: {
-    type: Schema.Types.ObjectId,
-    ref: "Property"
-  }
+  characters: [{ type: Schema.Types.ObjectId, ref: "Character" }],
+  properties: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Property"
+    }
+  ]
 });
 
 module.exports = mongoose.model("User", userSchema);

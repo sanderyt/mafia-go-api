@@ -16,8 +16,8 @@ router.post("/register", async (req, res) => {
       hats: 0,
       coins: 0
     },
-    characters: null,
-    properties: null
+    characters: [],
+    properties: []
   });
 
   try {

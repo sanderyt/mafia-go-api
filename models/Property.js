@@ -22,22 +22,20 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  ownerId: {
-    type: String,
-    required: true
-  },
-  ownerName: {
-    type: String,
-    required: true
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
   },
   defenceSet: {
     type: Boolean,
     required: true
   },
-  characterPositions: {
-    type: Schema.Types.ObjectId,
-    ref: "CharacterPosition"
-  }
+  characterPositions: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "CharacterPosition"
+    }
+  ]
 });
 
 module.exports = mongoose.model("Property", propertySchema);
