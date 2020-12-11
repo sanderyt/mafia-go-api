@@ -32,4 +32,8 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
+app.get("/docs", (req, res) => {
+  res.sendFile(__dirname + "/public/docs.html");
+});
+
 app.listen(PORT, () => console.log(`Server is up and running on port ${PORT}`));
