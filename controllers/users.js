@@ -38,7 +38,7 @@ module.exports = {
 
     try {
       const user = await User.findById(uid).populate("properties");
-      res.status(200).json(user);
+      res.status(200).json(user.properties);
     } catch (error) {
       res.status(400).json(error);
     }
@@ -92,6 +92,10 @@ module.exports = {
     );
 
     res.status(200).json(user);
+  },
+
+  getUserPropertyDefence: async (req, res, next) => {
+    const { uid } = req.params;
   },
 
   addUserPropertyDefence: async (req, res, next) => {

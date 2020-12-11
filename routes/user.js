@@ -28,6 +28,7 @@ router.route("/:uid/currency").patch(UsersController.updateUserCurrency);
 
 router
   .route("/:uid/properties/defence")
+  .get(UsersController.getUserPropertyDefence)
   .post(UsersController.addUserPropertyDefence);
 
 module.exports = router;
