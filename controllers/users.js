@@ -77,10 +77,21 @@ module.exports = {
 
   updateUserCurrency: async (req, res, next) => {
     const { uid } = req.params;
-    const currencies = req.body;
+    const { gold, hats, coins } = req.body;
 
-    const user = await User.findById(uid);
-    user.currency = currencies;
+    const user = await User.findByIdAndUpdate(
+      uid,
+      {
+        $inc: {
+          "currency.hats": hats,
+          "currency.coins": coins,
+          "currency.gold": gold
+        }
+      },
+      { new: false, useFindAndModify: false }
+    );
+
+    res.status(200).json(user);
   },
 
   addUserPropertyDefence: async (req, res, next) => {
