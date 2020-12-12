@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const propertySchema = new mongoose.Schema({
-  id: {
+  mapboxId: {
     type: String,
     required: true
   },
