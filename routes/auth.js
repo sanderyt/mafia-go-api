@@ -1,8 +1,11 @@
 const router = require("express").Router();
 const User = require("../models/User");
+const { defaultCharacters } = require("../lib/defaultCharacters");
 
 //Register new user
 router.post("/register", async (req, res) => {
+  const characters = await defaultCharacters();
+
   const user = new User({
     name: req.body.name,
     deviceId: req.body.deviceId,
@@ -16,17 +19,15 @@ router.post("/register", async (req, res) => {
       hats: 0,
       coins: 0
     },
-    characters: [],
+    characters,
     properties: []
   });
 
-  // Add the default characters here
-
   try {
     const newUser = await user.save();
-    res.send(newUser);
+    res.status(201).json(newUser);
   } catch (error) {
-    res.status(400).send(err);
+    res.status(400).send(error);
   }
 });
 
