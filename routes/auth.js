@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const { defaultCharacters } = require("../lib/defaultCharacters");
 
-//Register new user
 router.post("/register", async (req, res) => {
   const characters = await defaultCharacters();
   const user = new User({

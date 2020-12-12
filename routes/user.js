@@ -1,9 +1,6 @@
 const router = require("express").Router();
 const UsersController = require("../controllers/users");
 
-/**
- * All users endpoint
- */
 router.route("/").get(UsersController.getAllUsers);
 
 router

@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const Property = require("../models/Property");
 
+const { defaultCharacters } = require("../lib/defaultCharacters");
+
 module.exports = {
   getAllUsers: async (req, res, next) => {
     try {
@@ -70,7 +72,16 @@ module.exports = {
   },
 
   addUserCharacter: async (req, res, next) => {
-    //replace user
+    const { uid } = req.params;
+    try {
+      const user = await User.findById(uid);
+      const characters = await defaultCharacters();
+      user.characters = characters;
+      const updatedUser = user.save();
+      res.status(201).json(updatedUser);
+    } catch (error) {
+      res.status(400).send(error);
+    }
   },
 
   editUserCharacter: async (req, res, next) => {
