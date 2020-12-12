@@ -1,11 +1,11 @@
 const router = require("express").Router();
+const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const { defaultCharacters } = require("../lib/defaultCharacters");
 
 //Register new user
 router.post("/register", async (req, res) => {
   const characters = await defaultCharacters();
-
   const user = new User({
     name: req.body.name,
     deviceId: req.body.deviceId,
@@ -25,23 +25,24 @@ router.post("/register", async (req, res) => {
 
   try {
     const newUser = await user.save();
+    //jwt token
     res.status(201).json(newUser);
   } catch (error) {
     res.status(400).send(error);
   }
 });
 
-//Login user
 router.post("/login", async (req, res) => {
-  const user = await User.findOne({ deviceId: req.body.deviceId });
+  try {
+    const user = await User.findOne({ deviceId: req.body.deviceId })
+      .populate("properties")
+      .populate("characters");
 
-  //Get the device token from FCM and post to DB
-
-  if (!user) {
-    return res.status(400).send("This device is not registered and new user");
+    // const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).send(error);
   }
-
-  res.send(user);
 });
 
 module.exports = router;

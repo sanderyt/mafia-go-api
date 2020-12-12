@@ -14,7 +14,9 @@ module.exports = {
   getUser: async (req, res, next) => {
     const { uid } = req.params;
     try {
-      const user = await User.findById(uid);
+      const user = await User.findById(uid)
+        .populate("properties")
+        .populate("characters");
       res.status(200).json({ user });
     } catch (error) {
       res.status(400).send(error);
