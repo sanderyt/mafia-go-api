@@ -105,7 +105,8 @@ module.exports = {
         { new: false, useFindAndModify: false }
       );
 
-      res.status(200).json(user.currency);
+      const updatedUser = await User.findById(uid);
+      res.status(200).json(updatedUser.currency);
     } catch (error) {
       res.status(400).json(error);
     }

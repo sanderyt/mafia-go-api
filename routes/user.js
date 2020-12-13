@@ -21,7 +21,7 @@ router
   .patch(UsersController.editUserCharacter);
 
 // Special endpoints
-router.route("/:uid/currency").patch(UsersController.updateUserCurrency);
+router.route("/:uid/currency").put(UsersController.updateUserCurrency);
 
 router
   .route("/:uid/properties/:propertyId/defence")
