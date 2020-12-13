@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const { CharacterPosition } = require("./CharacterPosition");
 
 const propertySchema = new mongoose.Schema({
   mapboxId: {
@@ -30,12 +31,7 @@ const propertySchema = new mongoose.Schema({
     type: Boolean,
     required: true
   },
-  characterPositions: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "CharacterPosition"
-    }
-  ]
+  characterPositions: [CharacterPosition]
 });
 
 module.exports = mongoose.model("Property", propertySchema);

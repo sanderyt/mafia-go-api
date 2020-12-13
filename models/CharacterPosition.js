@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const characterPositionSchema = new mongoose.Schema({
+const CharacterPosition = new mongoose.Schema({
   positionX: {
     type: Number,
     required: true
@@ -15,4 +15,6 @@ const characterPositionSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("CharacterPosition", characterPositionSchema);
+module.exports = {
+  CharacterPosition
+};

@@ -108,10 +108,24 @@ module.exports = {
   },
 
   getUserPropertyDefence: async (req, res, next) => {
-    const { uid } = req.params;
+    const { uid, propertyId } = req.params;
   },
 
   addUserPropertyDefence: async (req, res, next) => {
-    const { uid } = req.params;
+    const { propertyId, uid } = req.params;
+    try {
+      const property = await Property.findById(propertyId);
+
+      const positions = req.body.Items;
+      property.characterPositions = positions;
+
+      await property.save();
+
+      const user = await User.findById(uid).populate("properties");
+
+      res.status(201).json(user.properties);
+    } catch (error) {
+      res.status(400).json(error);
+    }
   }
 };

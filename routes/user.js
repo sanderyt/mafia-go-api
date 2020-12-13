@@ -24,7 +24,7 @@ router
 router.route("/:uid/currency").patch(UsersController.updateUserCurrency);
 
 router
-  .route("/:uid/properties/defence")
+  .route("/:uid/properties/:propertyId/defence")
   .get(UsersController.getUserPropertyDefence)
   .post(UsersController.addUserPropertyDefence);
 
