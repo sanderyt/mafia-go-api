@@ -108,7 +108,14 @@ module.exports = {
   },
 
   getUserPropertyDefence: async (req, res, next) => {
-    const { uid, propertyId } = req.params;
+    const { propertyId } = req.params;
+
+    try {
+      const property = await Property.findById(propertyId);
+      res.status(201).json(property.characterPositions);
+    } catch (error) {
+      res.status(400).json(error);
+    }
   },
 
   addUserPropertyDefence: async (req, res, next) => {
