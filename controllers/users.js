@@ -92,19 +92,23 @@ module.exports = {
     const { uid } = req.params;
     const { gold, hats, coins } = req.body;
 
-    const user = await User.findByIdAndUpdate(
-      uid,
-      {
-        $inc: {
-          "currency.hats": hats,
-          "currency.coins": coins,
-          "currency.gold": gold
-        }
-      },
-      { new: false, useFindAndModify: false }
-    );
+    try {
+      const user = await User.findByIdAndUpdate(
+        uid,
+        {
+          $inc: {
+            "currency.hats": hats,
+            "currency.coins": coins,
+            "currency.gold": gold
+          }
+        },
+        { new: false, useFindAndModify: false }
+      );
 
-    res.status(200).json(user);
+      res.status(200).json(user.currency);
+    } catch (error) {
+      res.status(400).json(error);
+    }
   },
 
   getUserPropertyDefence: async (req, res, next) => {
